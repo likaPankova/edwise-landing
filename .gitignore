@@ -1,0 +1,24 @@
+# Environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.DS_Store
+*.egg-info/
+dist/
+build/
+
+# Local caches / generated artifacts
+assets_cache/
+outputs/*
+!outputs/.gitkeep
+
+# Never publish
+reference/
+Private & Shared/
+*.pem
+*.key

@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "name": "edwise_course_component_catalog",
+  "source_etalon": "outputs/lesson_115730_sonet_full.html",
+  "css_template": "course_base.css",
+  "principle": "Один визуальный язык (токены + компоненты). Разнообразие = разный набор/порядок/варианты блоков, не новый CSS. Компонент опционален; если включён — только разрешённые классы и variants.",
+  "rules_for_llm": [
+    "Не пиши свой CSS с нуля и не переопределяй :root / component classes из шаблона.",
+    "Собирай страницу только из компонентов этого каталога + их variants.",
+    "Не тащи flip/quiz/stepper «для красоты» — только если есть смысл в материале урока.",
+    "Меняй композицию: порядок секций, плотность, variants — так уроки не выглядят копией.",
+    "Все текстовые секции внутри .container; overflow запрещён.",
+    "Бренд-имя организации на страницу не выводи."
+  ],
+  "shell": {
+    "required": ["progress_track", "container"],
+    "optional": ["mini_nav", "footer"],
+    "description": "Каркас страницы. progress всегда; mini-nav — если секций ≥4."
+  },
+  "components": [
+    {
+      "id": "progress_track",
+      "required": true,
+      "classes": ["progress-track", "progress-bar"],
+      "variants": ["default"],
+      "when": "Всегда — тонкая полоска прогресса скролла сверху."
+    },
+    {
+      "id": "mini_nav",
+      "required": false,
+      "classes": ["mini-nav"],
+      "variants": ["default"],
+      "when": "Длинный урок с несколькими якорями."
+    },
+    {
+      "id": "hero",
+      "required": false,
+      "classes": ["hero", "hero-inner", "lead", "scroll-cue", "shape"],
+      "variants": [
+        {
+          "id": "top",
+          "classes": ["hero--top"],
+          "note": "Полноэкранный hero в начале (эталон)."
+        },
+        {
+          "id": "mid",
+          "classes": ["hero--mid"],
+          "note": "Hero-баннер после целей / в середине страницы."
+        },
+        {
+          "id": "compact",
+          "classes": ["hero--compact"],
+          "note": "Ниже, текст по центру вертикали."
+        },
+        {
+          "id": "banner",
+          "classes": ["hero--banner"],
+          "note": "Короткая шапка без «экрана»."
+        },
+        {
+          "id": "with_image",
+          "classes": [],
+          "note": "Фон HERO_BG + overlay (предпочтительно)."
+        },
+        {
+          "id": "gradient_only",
+          "classes": ["hero--gradient-only"],
+          "note": "Без фото, только брендовый градиент."
+        }
+      ],
+      "when": "Обычно в начале; можно mid, если урок стартует с целей."
+    },
+    {
+      "id": "goals",
+      "required": false,
+      "classes": ["goals-grid", "goal-card", "goal-num", "eyebrow"],
+      "variants": [
+        {"id": "grid3", "classes": ["goals-grid--3"], "note": "3 карточки (эталон)."},
+        {"id": "grid2", "classes": ["goals-grid--2"], "note": "2 карточки."},
+        {"id": "stack", "classes": ["goals-grid--stack"], "note": "Список в одну колонку."}
+      ],
+      "when": "Блок «Что вы отработаете» / цели урока."
+    },
+    {
+      "id": "section_heading",
+      "required": false,
+      "classes": ["edw-section-heading", "eyebrow"],
+      "variants": ["default"],
+      "when": "Заголовок любой контентной секции."
+    },
+    {
+      "id": "callouts",
+      "required": false,
+      "classes": [
+        "edw-warning",
+        "edw-tip",
+        "edw-definition",
+        "edw-key-takeaway",
+        "edw-example",
+        "edw-emphasis",
+        "edw-numeric"
+      ],
+      "variants": [
+        {"id": "warning", "classes": ["edw-warning"], "note": "Запреты / критично."},
+        {"id": "tip", "classes": ["edw-tip"], "note": "Подсказка."},
+        {"id": "definition", "classes": ["edw-definition"], "note": "Термин."},
+        {"id": "takeaway", "classes": ["edw-key-takeaway"], "note": "Ключевой вывод."},
+        {"id": "example", "classes": ["edw-example"], "note": "Пример."}
+      ],
+      "when": "Точечно по смыслу; не дублировать один факт во всех callout."
+    },
+    {
+      "id": "steps",
+      "required": false,
+      "classes": ["edw-steps"],
+      "variants": [
+        {"id": "vertical", "classes": [], "note": "Нумерованная вертикаль (эталон)."},
+        {"id": "compact", "classes": ["edw-steps--compact"], "note": "Плотнее."},
+        {"id": "horizontal", "classes": ["edw-steps--horizontal"], "note": "Карточки в ряд для коротких шагов."}
+      ],
+      "when": "Есть нумерованная процедура из N шагов — сохраняй N."
+    },
+    {
+      "id": "stepper_map",
+      "required": false,
+      "classes": ["stepper", "step-tab", "step-panel", "step-progress-line", "step-progress-fill", "chart-tag"],
+      "variants": ["default"],
+      "when": "Интерактивная техкарта / вкладки шагов (как в эталоне ЩУ)."
+    },
+    {
+      "id": "media",
+      "required": false,
+      "classes": ["media-figure", "media-inline"],
+      "variants": [
+        {"id": "figure", "classes": ["media-figure"], "note": "Картинка/схема + подпись на всю ширину контейнера."},
+        {"id": "narrow", "classes": ["media-figure--narrow"], "note": "Уже по центру."},
+        {"id": "row", "classes": ["media-row"], "note": "Два медиа рядом."},
+        {"id": "inline", "classes": ["media-inline"], "note": "Внутри step-panel / текста."}
+      ],
+      "when": "Есть MEDIA:id в catalog — используй плейсхолдеры."
+    },
+    {
+      "id": "equip_cards",
+      "required": false,
+      "classes": ["equip-grid", "equip-card"],
+      "variants": ["default"],
+      "when": "Карточки оснащения / оборудования."
+    },
+    {
+      "id": "checklist",
+      "required": false,
+      "classes": ["edw-checklist", "checklist-status", "final-check-box", "final-success"],
+      "variants": [
+        {"id": "practice", "classes": ["edw-checklist"], "note": "Обычный чек-лист в секции."},
+        {"id": "final", "classes": ["final-check-box"], "note": "Финальный чек с confetti/success."}
+      ],
+      "when": "Практика «отметьте» или финальный контроль."
+    },
+    {
+      "id": "flip_card",
+      "required": false,
+      "classes": ["flip-wrap", "flip-card", "flip-inner", "flip-face", "flip-front", "flip-back", "flip-hint"],
+      "variants": [
+        {
+          "id": "single_centered",
+          "classes": ["flip-wrap", "flip-wrap--single"],
+          "note": "Одна карточка по центру (обязательный паттерн)."
+        },
+        {
+          "id": "grid2",
+          "classes": ["flip-wrap--grid"],
+          "note": "Две flip-карточки в ряд."
+        }
+      ],
+      "when": "Вопрос↔ответ / термин. Всегда через .flip-wrap, никогда card без wrap."
+    },
+    {
+      "id": "quiz",
+      "required": false,
+      "classes": ["quiz-item", "quiz-options", "quiz-opt", "quiz-feedback"],
+      "variants": [
+        {"id": "single", "classes": ["quiz-list--single"], "note": "1 вопрос."},
+        {"id": "stack", "classes": ["quiz-list--stack"], "note": "Несколько вопросов подряд."}
+      ],
+      "behavior": {
+        "correct": "зелёный + feedback «Верно.» без длинного explain",
+        "incorrect": "красный + shake + explain почему выбранный неверен; показать верный"
+      },
+      "when": "Проверка знаний. Не обязателен."
+    },
+    {
+      "id": "split_layout",
+      "required": false,
+      "classes": ["split-2"],
+      "variants": ["default"],
+      "when": "Текст + медиа / warning рядом на широком экране."
+    },
+    {
+      "id": "section_surface",
+      "required": false,
+      "classes": ["section--plain", "section--surface", "section--tight", "section--loose"],
+      "variants": [
+        {"id": "plain", "classes": ["section--plain"]},
+        {"id": "surface", "classes": ["section--surface"]},
+        {"id": "tight", "classes": ["section--tight"]},
+        {"id": "loose", "classes": ["section--loose"]}
+      ],
+      "when": "Чередуй фон секций для ритма, не для нового стиля."
+    },
+    {
+      "id": "footer",
+      "required": false,
+      "classes": [],
+      "variants": ["default"],
+      "when": "Короткий итог/переход; без названия организации."
+    }
+  ],
+  "example_compositions": [
+    {
+      "name": "procedure_heavy",
+      "from_etalon": true,
+      "flow": ["hero:top+with_image", "goals:grid3", "callouts", "steps:vertical", "media:figure", "stepper_map", "flip:single_centered", "quiz:stack", "checklist:final"]
+    },
+    {
+      "name": "practice_short",
+      "flow": ["hero:banner+gradient_only", "goals:grid2", "steps:horizontal", "checklist:practice", "quiz:single"]
+    },
+    {
+      "name": "media_first",
+      "flow": ["goals:stack", "media:row", "hero:mid+with_image", "callouts:warning", "flip:grid2", "steps:compact"]
+    },
+    {
+      "name": "definition_focus",
+      "flow": ["hero:compact", "callouts:definition", "flip:single_centered", "edw-key-takeaway", "checklist:practice"]
+    }
+  ]
+}

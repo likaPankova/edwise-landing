@@ -1,0 +1,47 @@
+{
+  "id": 1,
+  "name": "Demo Brand",
+  "color": "#8196a1",
+  "custom": {
+    "secondaryColor": "#EC8A00",
+    "normalized": {
+      "metadata": {
+        "summary": "Calm corporate learning design: orange headings, muted gray body text, clean left-aligned layout.",
+        "palette": {
+          "primary": "#EC8A00",
+          "secondary": "#8196A1",
+          "accent": "#D97706",
+          "text": "#4F5B62",
+          "text-muted": "#6E7A82",
+          "background": "#FFFFFF",
+          "surface": "#F5F7F8",
+          "border": "#D5DCE0",
+          "success": "#2E8B57",
+          "warning": "#C2410C"
+        },
+        "typography": {
+          "font-family-body": "Calibri, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+          "font-family-headings": "Calibri, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+          "base-font-size": "16px"
+        },
+        "radius": {
+          "sm": "4px",
+          "md": "8px",
+          "lg": "12px"
+        }
+      },
+      "tags": {
+        "p": {
+          "color": "#4F5B62",
+          "font-family": "Calibri, 'Segoe UI', Arial, sans-serif",
+          "line-height": "1.6"
+        },
+        "h2": {
+          "color": "#EC8A00",
+          "font-weight": "700"
+        }
+      },
+      "classes": {}
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": 1001,
+      "code": "Workplace safety basics",
+      "description": "Learn when and how to use personal protective equipment before entering a work area.",
+      "order_num": 1,
+      "scheme_description": { "isTest": false },
+      "media": [],
+      "step_info": {
+        "attributes": [
+          {
+            "id": 1,
+            "name": "richText",
+            "type": "text",
+            "orderNum": 1,
+            "text": "<p>Always wear required PPE before entering the work area. Check gloves, helmet, and safety glasses.</p><p>Report damaged equipment to your supervisor immediately.</p>"
+          },
+          {
+            "id": 2,
+            "name": "flipCard",
+            "type": "text",
+            "orderNum": 2,
+            "text": "[{\"front\":{\"title\":\"Question\",\"description\":\"When must PPE be worn?\"},\"back\":{\"title\":\"Answer\",\"description\":\"Before entering the work area.\"}}]"
+          },
+          {
+            "id": 3,
+            "name": "richText",
+            "type": "text",
+            "orderNum": 3,
+            "text": "<p>Key takeaway: PPE is mandatory, not optional. A 30-second check can prevent serious injury.</p>"
+          }
+        ]
+      }
+    }
+  ]
+}
